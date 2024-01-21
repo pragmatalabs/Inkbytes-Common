@@ -12,3 +12,6 @@ except (ModuleNotFoundError, KeyError) as e:
 def get_logger(name):
     logger = logging.getLogger(name)
     return logger
+
+
+Logger = get_logger
