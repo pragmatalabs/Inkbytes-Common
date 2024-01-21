@@ -1,16 +1,16 @@
 import requests
 
-import Logger
+import logging
 
-logger = Logger.get_logger("InkPills Rest Client")
+logger = logging.getLogger("InkPills Rest Client")
 
 
 class RestClient:
     """
-    RestClient Class
+    StandardRestClient Class
     ----------------
 
-    The `RestClient` class is used to interact with REST APIs by sending HTTP requests.
+    The `StandardRestClient` class is used to interact with REST APIs by sending HTTP requests.
 
     Methods:
         - __init__(base_url="")
@@ -26,11 +26,11 @@ class RestClient:
         - _base_url (str): The base URL used for constructing full URLs for API requests.
 
     Initialization:
-        The `RestClient` class can be initialized with an optional `base_url` parameter that sets the base URL for all API
+        The `StandardRestClient` class can be initialized with an optional `base_url` parameter that sets the base URL for all API
         requests. If no `base_url` is provided, the default value is an empty string.
 
     Examples:
-        >>> client = RestClient()
+        >>> client = StandardRestClient()
         >>> client.base_url
         ''
         >>> client.base_url = "https://api.example.com"
