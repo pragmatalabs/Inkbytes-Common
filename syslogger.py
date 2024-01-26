@@ -7,7 +7,7 @@ class LoggerFactory():
     @staticmethod
     def setup_logging():
         try:
-            import SysDictionary
+            import sysdictionary
             selected_logging_level = SysDictionary.LOGGING_CONF.get("LOG_LEVEL", LoggerFactory.FALLBACK_LOGGING_LEVEL)
             logging.basicConfig(level=selected_logging_level)
         except (ModuleNotFoundError, KeyError) as e:

@@ -1,16 +1,13 @@
 import re
 import string
-import sys
 
 import nltk
 from bs4 import BeautifulSoup
 from nltk.corpus import stopwords
 
-sys.path.append("../")
-from Settings import Logger
-
 __name__ = "TextProcessor"
-logger = Logger.get_logger(__name__)
+import logging
+logger = logging.getLogger(__name__)
 
 
 class TextProcessor:
