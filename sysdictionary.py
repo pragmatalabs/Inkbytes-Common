@@ -7,15 +7,23 @@ class SysDictionary():
     pass
 
 
-def config():
+def config(storage_type="local"):
     load_dotenv(os.path.join(os.curdir, ".env"))
     base_system_folder = os.path.join(os.pardir)
     app_folder = base_system_folder
     mode = os.getenv("MODE", "development")
     outlets_folder = os.path.join(base_system_folder, os.getenv("OUTLETS_FOLDER"))
-    storage_path = os.path.join(base_system_folder, "Storage/")
-    storage_file = storage_path + os.getenv("STORAGE_FILE")
-    storage_clusters_path = storage_path + os.getenv("STORAGE_CLUSTERS_PATH")
+
+    if storage_type == "local":
+        storage_path = os.path.join(base_system_folder, os.getenv("STAGING_STORAGE_LOCAL"))
+        storage_file = storage_path + os.getenv("STORAGE_FILE")
+        storage_clusters_path = storage_path + os.getenv("STORAGE_CLUSTERS_PATH")
+    elif storage_type == "bucket":
+        storage_path = os.path.join(base_system_folder, os.getenv("STAGING_STORAGE_BUCKET"))
+        storage_file = os.getenv("STORAGE_FILE_BUCKET")
+        storage_clusters_path = os.getenv("STORAGE_CLUSTERS_PATH_BUCKET")
+    else:
+        raise ValueError("Invalid storage_type. Use 'local' or 'bucket'.")
 
     return (
         mode,
